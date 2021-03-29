@@ -22,6 +22,7 @@ parameters:
   - name: nameTaksInput
     displayName: Type Input
   - name: nameObjectTask
+    displayName: Type Object
     type: object
     default:
       foo: FOO
