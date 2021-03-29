@@ -41,3 +41,6 @@ parameters:
     default:
       script: echo my step
 
+steps:
+- ${{ each value in parameters.nameObjectTask }}:
+  - script: echo ${{ value }}
