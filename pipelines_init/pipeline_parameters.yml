@@ -4,11 +4,19 @@ trigger:
     - refs/heads/develop
 name: $(date:yyyyMMdd)$(rev:.r)
 parameters:
-  - name: nameTaskToRun001
-    displayName: Name Task To Run 001
+  - name: nameTaskBooleanFalse
+    displayName: Type boolean False
     type: boolean
     default: False
-  - name: nameTaskToRun002
-    displayName: Name Task To Run 002
+  - name: nameTaskBooleanTrue
+    displayName: Type boolean True
     type: boolean
     default: True
+  - name: nameTaskValues
+    displayName: Type Values
+    default: Maybe
+    values:
+      - Yes
+      - No
+      - Maybe
+
