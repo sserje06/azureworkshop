@@ -36,5 +36,5 @@ parameters:
       script: echo my step
 
 steps:
-- ${{ each value in parameters.nameObjectTask }}:
+- ${{ each value in parameters.nameObjectTask.things }}:
   - script: echo ${{ value }}
