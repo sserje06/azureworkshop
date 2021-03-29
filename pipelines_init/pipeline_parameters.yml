@@ -25,16 +25,10 @@ parameters:
     displayName: Type Object
     type: object
     default:
-      foo: FOO
-      bar: BAR
       things:
       - one
       - two
       - three
-      nested:
-        one: apple
-        two: pear
-        count: 3
   - name: nameStepTask
     displayName: Type Steps
     type: step
