@@ -46,7 +46,7 @@ jobs:
 - job: myStep
   steps:
     - ${{ parameters.nameStepTask }}
-- job: Object Run
-steps:
-- ${{ each value in parameters.nameObjectTask.things }}:
-  - script: echo ${{ value }}
+- job: ObjectRun
+  steps:
+  - ${{ each value in parameters.nameObjectTask.things }}:
+    - script: echo ${{ value }}
