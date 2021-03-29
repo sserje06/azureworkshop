@@ -35,4 +35,9 @@ parameters:
         one: apple
         two: pear
         count: 3
+  - name: nameStepTask
+    displayName: Type Steps
+    type: step
+    default:
+      script: echo my step
 
