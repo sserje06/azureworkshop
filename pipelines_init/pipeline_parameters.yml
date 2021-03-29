@@ -1,0 +1,14 @@
+trigger:
+  branches:
+    include:
+    - refs/heads/develop
+name: $(date:yyyyMMdd)$(rev:.r)
+parameters:
+  - name: nameTaskToRun001
+    displayName: Name Task To Run 001
+    type: boolean
+    default: False
+  - name: nameTaskToRun002
+    displayName: Name Task To Run 002
+    type: boolean
+    default: True
