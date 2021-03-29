@@ -34,7 +34,19 @@ parameters:
     type: step
     default:
       script: echo my step
+  - name: nameStepTaskList
+    type: stepList
+    default:
+      - script: echo step one
+      - script: echo step two
 
+jobs: 
+- job: stepList
+  steps: ${{ parameters.nameStepTaskList }}
+- job: myStep
+  steps:
+    - ${{ parameters.nameStepTask }}
+- job: Object Run
 steps:
 - ${{ each value in parameters.nameObjectTask.things }}:
   - script: echo ${{ value }}
