@@ -20,4 +20,10 @@ jobs:
         }
         $convertArrayToJson = $newArray | convertTo-json -Compress
         echo "##vso[task.setVariable variable=environments;isOutput=true]$convertArrayToJson"
-
+    name: matrix_deployment 
+- job: Build
+  dependsOn: createEnvironments
+  displayName: Creating Environments
+  strategy:
+    matrix: $[dependencies.createEnvironments.outputs['matrix_deployment.environments']]
+    maxParallel: 1
