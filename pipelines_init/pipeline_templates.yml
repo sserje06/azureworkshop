@@ -1,0 +1,3 @@
+#stage deployment
+trigger: none
+name: $(date:yyyyMMdd)$(rev:.r)
