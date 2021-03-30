@@ -1,0 +1,23 @@
+trigger: none
+name: $(date:yyyyMMdd)$(rev:.r)
+variables:
+- group: test_001
+- name: var_name
+  value: var_value01
+
+steps:
+  - script: |
+      echo ${{ variables.var_name }}
+      echo $(var_name)
+    displayName: Variable Name Value
+  - bash: echo '##vso[task.setVariable variable=var_name_new]newValue'  
+    displayName: Set Environment Variable
+  - script: |
+      echo $(var_name_new)
+    displayName: Value New Enviroment Variable
+  - script: |
+      echo Build ID
+      echo $(Build.BuildId)
+      echo Branch name
+      echo $(Build.SourceBranchName)
+    displayName: Predefined Variables
