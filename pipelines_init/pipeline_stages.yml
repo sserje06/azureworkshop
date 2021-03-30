@@ -1,0 +1,38 @@
+#stage deployment
+trigger: none
+name: $(date:yyyyMMdd)$(rev:.r)
+
+stages:
+- stage: Develop
+  jobs:
+  - job: BuildStage
+    steps:
+    - task: PowerShell@2
+      inputs:
+        targetType: 'inline'
+        script: |
+          # Write your PowerShell commands here.
+          
+          Write-Host "Task of build going here"
+- stage: QA
+  jobs:
+  - job: qaStage
+    steps:
+    - task: PowerShell@2
+      inputs:
+        targetType: 'inline'
+        script: |
+          # Write your PowerShell commands here.
+          
+          Write-Host "Task of QA going here"
+- stage: Production
+  jobs:
+  - job: prodStage
+    steps:
+    - task: PowerShell@2
+      inputs:
+        targetType: 'inline'
+        script: |
+          # Write your PowerShell commands here.
+          
+          Write-Host "Task of Production going here"
