@@ -1,8 +1,8 @@
 steps:
 - task: PowerShell@2
+  displayName: Task from Steps Template 01 (Steps Template)
   inputs:
     targetType: 'inline'
-    displayName: Task from Steps Template 01 (Steps Template)
     script: |
       # Write your PowerShell commands here.
       
