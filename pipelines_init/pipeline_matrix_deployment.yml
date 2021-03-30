@@ -27,3 +27,23 @@ jobs:
   strategy:
     matrix: $[dependencies.createEnvironments.outputs['matrix_deployment.environments']]
     maxParallel: 1
+  pool:
+   vmImage: ubuntu-18.04
+  steps:
+  - checkout: self
+  - task: PowerShell@2
+    displayName: Runing Taks 01
+    inputs:
+      targetType: 'inline'
+      script: |
+        # Write your PowerShell commands here.
+        
+        Write-Host "Hello World"
+  - task: PowerShell@2
+    displayName: Runing Taks 02
+    inputs:
+      targetType: 'inline'
+      script: |
+        # Write your PowerShell commands here.
+        
+        Write-Host "Hello World"
