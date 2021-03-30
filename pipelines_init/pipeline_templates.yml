@@ -14,6 +14,6 @@ parameters:
 
 steps:
 - ${{ if eq(parameters.templateVariables, true)}}:
-  - template: pipeline_variables.yml
+  - template: pipeline_test_a.yml
 - ${{ if eq(parameters.templateVariables, true)}}:
-  - template: templateStages.yml
+  - template: pipeline_test_b.yml
