@@ -33,7 +33,7 @@ jobs:
   - checkout: self
   - task: PowerShell@2
     displayName: DEV and QA environments
-    condition: and(succeeded(), in(variables['var_environments'], 'DEV', 'QA'))
+    condition: and(succeeded(), in(variables['var_environments'], 'dev', 'qa'))
     inputs:
       targetType: 'inline'
       script: |
@@ -42,7 +42,7 @@ jobs:
         Write-Host "Run only for DEV and QA environments"
   - task: PowerShell@2
     displayName: PROD and QA environments
-    condition: and(succeeded(), notIn(variables['var_environments'], 'DEV'))
+    condition: and(succeeded(), notIn(variables['var_environments'], 'dev'))
     inputs:
       targetType: 'inline'
       script: |
@@ -51,7 +51,7 @@ jobs:
         Write-Host "Run only for environments differents to DEV"
   - task: PowerShell@2
     displayName: PROD environments
-    condition: and(succeeded(), eq(variables['var_environments'], 'PROD'))
+    condition: and(succeeded(), eq(variables['var_environments'], 'prod'))
     inputs:
       targetType: 'inline'
       script: |
