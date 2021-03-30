@@ -19,3 +19,5 @@ jobs:
     - template: pipeline_test_a.yml
   - ${{ if eq(parameters.templateVariables, true)}}:
     - template: pipeline_test_b.yml
+- job: 
+- template: pipeline_jobs.yml
