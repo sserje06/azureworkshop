@@ -12,8 +12,10 @@ parameters:
   type: boolean
   default: false
 
-steps:
-- ${{ if eq(parameters.templateVariables, true)}}:
-  - template: pipeline_test_a.yml
-- ${{ if eq(parameters.templateVariables, true)}}:
-  - template: pipeline_test_b.yml
+jobs:
+- job:
+  steps:
+  - ${{ if eq(parameters.templateVariables, true)}}:
+    - template: pipeline_test_a.yml
+  - ${{ if eq(parameters.templateVariables, true)}}:
+    - template: pipeline_test_b.yml
