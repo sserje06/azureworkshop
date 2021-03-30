@@ -1,0 +1,7 @@
+trigger: none
+name: $(date:yyyyMMdd)$(rev:.r)
+variables:
+  - group: test_001
+
+steps:
+  
