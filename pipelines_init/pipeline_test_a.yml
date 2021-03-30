@@ -1,19 +1,17 @@
-jobs:
-- job: conditional
-  steps:
-  - task: PowerShell@2
-    displayName: Conditional Variable By Parameters
-    inputs:
-      targetType: 'inline'
-      script: |
-        # Write your PowerShell commands here.
-        
-        Write-Host "parameter input contains release or feature in the value"
-  - task: PowerShell@2
-    displayName: Conditional by Variable Group
-    inputs:
-      targetType: 'inline'
-      script: |
-        # Write your PowerShell commands here.
-        
-        Write-Host "var_conditional_branch is equal to feature in the value"
+steps:
+- task: PowerShell@2
+  displayName: Conditional Variable By Parameters
+  inputs:
+    targetType: 'inline'
+    script: |
+      # Write your PowerShell commands here.
+      
+      Write-Host "parameter input contains release or feature in the value"
+- task: PowerShell@2
+  displayName: Conditional by Variable Group
+  inputs:
+    targetType: 'inline'
+    script: |
+      # Write your PowerShell commands here.
+      
+      Write-Host "var_conditional_branch is equal to feature in the value"
