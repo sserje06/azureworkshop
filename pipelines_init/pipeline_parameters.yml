@@ -1,7 +1,4 @@
-trigger:
-  branches:
-    include:
-    - refs/heads/develop
+trigger: none
 name: $(date:yyyyMMdd)$(rev:.r)
 parameters:
   - name: nameTaskBooleanFalse
@@ -39,7 +36,6 @@ parameters:
     default:
       - script: echo step one
       - script: echo step two
-
 jobs: 
 - job: stepList
   steps: ${{ parameters.nameStepTaskList }}
