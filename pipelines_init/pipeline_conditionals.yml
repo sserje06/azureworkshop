@@ -26,4 +26,4 @@ jobs:
       script: |
         # Write your PowerShell commands here.
         
-        Write-Host "var_conditional_branch equal to feature in the value"
+        Write-Host "var_conditional_branch is equal to feature in the value"
