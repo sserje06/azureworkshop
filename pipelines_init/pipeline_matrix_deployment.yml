@@ -39,7 +39,7 @@ jobs:
       script: |
         # Write your PowerShell commands here.
         
-        Write-Host "Hello World"
+        Write-Host "Run only for DEV and QA environments"
   - task: PowerShell@2
     displayName: Runing Taks 02
     condition: and(succeeded(), notIn(variables['var_environments'], 'DEV'))
@@ -48,7 +48,7 @@ jobs:
       script: |
         # Write your PowerShell commands here.
         
-        Write-Host "Hello World"
+        Write-Host "Run only for environments differents to DEV"
   - task: PowerShell@2
     displayName: Runing Taks 03
     condition: and(succeeded(), eq(variables['var_environments'], 'PROD'))
@@ -57,4 +57,4 @@ jobs:
       script: |
         # Write your PowerShell commands here.
         
-        Write-Host "Hello World"
+        Write-Host "Run only for PROD Environment"
