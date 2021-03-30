@@ -3,7 +3,7 @@ name: $(date:yyyyMMdd)$(rev:.r)
 variables:
 - group: test_001
 - name: var_name
-  value: var_value01
+  value: value01
 
 steps:
   - script: |
@@ -13,6 +13,7 @@ steps:
   - bash: echo '##vso[task.setVariable variable=var_name_new]newValue'  
     displayName: Set Environment Variable
   - script: |
+      echo Value var_name_new
       echo $(var_name_new)
     displayName: Value New Enviroment Variable
   - script: |
@@ -22,5 +23,6 @@ steps:
       echo $(Build.SourceBranchName)
     displayName: Predefined Variables
   - script: |
+      echo Value For Variable Group var_branch_name
       echo $(var_branch_name)
     displayName: Value Variable Group
