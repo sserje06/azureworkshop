@@ -1,3 +1,19 @@
 #stage deployment
 trigger: none
 name: $(date:yyyyMMdd)$(rev:.r)
+
+parameters:
+- name: templateVariables
+  displayName: Template Variables
+  type: boolean
+  default: false
+- name: templateStages
+  displayName: Template Stages
+  type: boolean
+  default: false
+
+steps:
+- ${{ if eq(parameters.templateVariables, true)}}:
+  - template: pipeline_variables.yml
+- ${{ if eq(parameters.templateVariables, true)}}:
+  - template: templateStages.yml
