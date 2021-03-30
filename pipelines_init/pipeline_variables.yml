@@ -21,3 +21,6 @@ steps:
       echo Branch name
       echo $(Build.SourceBranchName)
     displayName: Predefined Variables
+  - script: |
+      echo $(var_branch_name)
+    displayName: Value Variable Group
