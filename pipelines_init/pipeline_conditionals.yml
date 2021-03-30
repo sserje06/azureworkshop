@@ -20,7 +20,7 @@ jobs:
         Write-Host "var_conditional_branch contains release or feature in the value"
   - task: PowerShell@2
     displayName: Conditional by Variable Group
-    condition: eq($(var_conditional_branch), 'feature')
+    condition: and(succeeded(), eq($(var_conditional_branch), 'feature'))
     inputs:
       targetType: 'inline'
       script: |
