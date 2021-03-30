@@ -33,6 +33,7 @@ jobs:
   - checkout: self
   - task: PowerShell@2
     displayName: Runing Taks 01
+    condition: and(succeeded(), in(variables['var_environments'], 'DEV', 'QA'))
     inputs:
       targetType: 'inline'
       script: |
@@ -41,6 +42,16 @@ jobs:
         Write-Host "Hello World"
   - task: PowerShell@2
     displayName: Runing Taks 02
+    condition: and(succeeded(), notIn(variables['var_environments'], 'DEV'))
+    inputs:
+      targetType: 'inline'
+      script: |
+        # Write your PowerShell commands here.
+        
+        Write-Host "Hello World"
+  - task: PowerShell@2
+    displayName: Runing Taks 03
+    condition: and(succeeded(), eq(variables['var_environments'], 'PROD'))
     inputs:
       targetType: 'inline'
       script: |
