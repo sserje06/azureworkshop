@@ -1,0 +1,23 @@
+trigger: none
+name: $(date:yyyyMMdd)$(rev:.r)
+
+jobs:
+- job: createEnvironments
+  steps:
+  - task: PowerShell@2
+    displayName: Generate Environments
+    inputs:
+      targetType: 'inline'
+      script: |
+        $newArray=[ordered] @{}
+        $environments = "${env:VAR_ENVIRONMENTS}"
+        $getArray = $environments.split(",")
+
+        foreach ($i in $getArray){
+            $newArray += @{
+                $i = @{"env"=$i}
+            }
+        }
+        $convertArrayToJson = $newArray | convertTo-json -Compress
+        echo "##vso[task.setVariable variable=environments;isOutput=true]$convertArrayToJson"
+
