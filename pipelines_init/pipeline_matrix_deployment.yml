@@ -32,7 +32,7 @@ jobs:
   steps:
   - checkout: self
   - task: PowerShell@2
-    displayName: Runing Taks 01
+    displayName: DEV and QA environments
     condition: and(succeeded(), in(variables['var_environments'], 'DEV', 'QA'))
     inputs:
       targetType: 'inline'
@@ -41,7 +41,7 @@ jobs:
         
         Write-Host "Run only for DEV and QA environments"
   - task: PowerShell@2
-    displayName: Runing Taks 02
+    displayName: PROD and QA environments
     condition: and(succeeded(), notIn(variables['var_environments'], 'DEV'))
     inputs:
       targetType: 'inline'
@@ -50,7 +50,7 @@ jobs:
         
         Write-Host "Run only for environments differents to DEV"
   - task: PowerShell@2
-    displayName: Runing Taks 03
+    displayName: PROD environments
     condition: and(succeeded(), eq(variables['var_environments'], 'PROD'))
     inputs:
       targetType: 'inline'
