@@ -11,7 +11,7 @@ jobs:
   steps:
   - task: PowerShell@2
     displayName: Conditional Variable By Parameters
-    condition: in('${{ parameters.input }}', 'release', 'feature')
+    condition: in('${{ parameters.input }}', 'release')
     inputs:
       targetType: 'inline'
       script: |
