@@ -2,21 +2,16 @@ steps:
 - task: PowerShell@2
   inputs:
     targetType: 'inline'
+    displayName: Task from Steps Template 01 (Steps Template)
     script: |
       # Write your PowerShell commands here.
       
       Write-Host "Task of build going here"
 - task: PowerShell@2
+  displayName: Task from Steps Template 02 (Steps Template)
   inputs:
     targetType: 'inline'
     script: |
       # Write your PowerShell commands here.
       
       Write-Host "Task of QA going here"
-- task: PowerShell@2
-  inputs:
-    targetType: 'inline'
-    script: |
-      # Write your PowerShell commands here.
-      
-      Write-Host "Task of Production going here"

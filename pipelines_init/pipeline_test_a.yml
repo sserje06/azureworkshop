@@ -1,6 +1,6 @@
 steps:
 - task: PowerShell@2
-  displayName: Conditional Variable By Parameters
+  displayName: Conditional Variable By Parameters (Steps Template)
   inputs:
     targetType: 'inline'
     script: |
@@ -8,7 +8,7 @@ steps:
       
       Write-Host "parameter input contains release or feature in the value"
 - task: PowerShell@2
-  displayName: Conditional by Variable Group
+  displayName: Conditional by Variable Group (Steps Template)
   inputs:
     targetType: 'inline'
     script: |
