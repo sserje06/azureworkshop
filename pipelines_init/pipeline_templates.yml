@@ -1,3 +1,7 @@
+#stage deployment
+trigger: none
+name: $(date:yyyyMMdd)$(rev:.r)
+
 parameters:
 - name: templateVariables
   displayName: Template Variables
