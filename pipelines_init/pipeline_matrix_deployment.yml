@@ -51,7 +51,7 @@ jobs:
         Write-Host "Run only for environments differents to DEV"
   - task: PowerShell@2
     displayName: PROD environments
-    condition: and(succeeded(), eq(variables['var_environments'], 'QA'))
+    condition: and(succeeded(), eq(variables['var_environments'], 'PROD'))
     inputs:
       targetType: 'inline'
       script: |
