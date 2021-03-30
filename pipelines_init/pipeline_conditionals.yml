@@ -20,7 +20,7 @@ jobs:
         Write-Host "parameter input contains release or feature in the value"
   - task: PowerShell@2
     displayName: Conditional by Variable Group
-    condition: and(succeeded(), eq($(var_conditional_branch), 'feature'))
+    condition: and(succeeded(), eq(variables['var_conditional_branch'], 'feature'))
     inputs:
       targetType: 'inline'
       script: |
