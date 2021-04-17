@@ -53,7 +53,7 @@ jobs:
           "@
             $contentType = 'application/json'
             $url = "https://vsrm.dev.azure.com/{organization}/{project}/_apis/release/releases?api-version=6.1-preview.8"
-            $executeCommand= Invoke-RestMethod -Uri $url -Method POST -Body $body -ContenType $contentType -Headers @{
+            $executeCommand= Invoke-RestMethod -Uri $url -Method POST -Body $body -ContentType $contentType -Headers @{
                 Authorization = "Bearer $env:SYSTEM_ACCESSTOKEN"
             }
       env:
