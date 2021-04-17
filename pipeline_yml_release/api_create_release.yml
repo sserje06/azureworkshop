@@ -29,7 +29,7 @@ jobs:
           echo Create Body
           $body = @"
           {
-              "definitionId": $release_definition_id_01,
+              "definitionId": $(release_definition_id_01),
               "description": "Release Created from ADO",
               "artifacts": [
               {
