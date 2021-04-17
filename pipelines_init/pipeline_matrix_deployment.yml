@@ -1,0 +1,60 @@
+trigger: none
+name: $(date:yyyyMMdd)$(rev:.r)
+
+jobs:
+- job: createEnvironments
+  steps:
+  - task: PowerShell@2
+    displayName: Generate Environments
+    inputs:
+      targetType: 'inline'
+      script: |
+        $newArray=[ordered] @{}
+        $environments = "${env:VAR_ENVIRONMENTS}"
+        $getArray = $environments.split(",")
+
+        foreach ($i in $getArray){
+            $newArray += @{
+                $i = @{"var_environments"=$i}
+            }
+        }
+        $convertArrayToJson = $newArray | convertTo-json -Compress
+        echo "##vso[task.setVariable variable=environments;isOutput=true]$convertArrayToJson"
+    name: matrix_deployment 
+- job: Build
+  dependsOn: createEnvironments
+  displayName: Creating Environments
+  strategy:
+    matrix: $[dependencies.createEnvironments.outputs['matrix_deployment.environments']]
+    maxParallel: 1
+  pool:
+   vmImage: ubuntu-18.04
+  steps:
+  - checkout: self
+  - task: PowerShell@2
+    displayName: DEV and QA environments
+    condition: and(succeeded(), in(variables['var_environments'], 'DEV', 'QA'))
+    inputs:
+      targetType: 'inline'
+      script: |
+        # Write your PowerShell commands here.
+        
+        Write-Host "Run only for DEV and QA environments"
+  - task: PowerShell@2
+    displayName: PROD and QA environments
+    condition: and(succeeded(), notIn(variables['var_environments'], 'DEV'))
+    inputs:
+      targetType: 'inline'
+      script: |
+        # Write your PowerShell commands here.
+        
+        Write-Host "Run only for environments differents to DEV"
+  - task: PowerShell@2
+    displayName: PROD environments
+    condition: and(succeeded(), eq(variables['var_environments'], 'PROD'))
+    inputs:
+      targetType: 'inline'
+      script: |
+        # Write your PowerShell commands here.
+        
+        Write-Host "Run only for PROD Environment"

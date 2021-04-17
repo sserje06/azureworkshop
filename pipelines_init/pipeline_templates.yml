@@ -1,0 +1,23 @@
+#stage deployment
+trigger: none
+name: $(date:yyyyMMdd)$(rev:.r)
+
+parameters:
+- name: templateVariables
+  displayName: Template Variables
+  type: boolean
+  default: false
+- name: templateStages
+  displayName: Template Stages
+  type: boolean
+  default: false
+
+jobs:
+- job: runTemplateSteps
+  steps:
+  - ${{ if eq(parameters.templateVariables, true)}}:
+    - template: pipeline_test_a.yml
+  - ${{ if eq(parameters.templateVariables, true)}}:
+    - template: pipeline_test_b.yml
+- job: runTemplateJobs
+- template: pipeline_jobs.yml

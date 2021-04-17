@@ -1,0 +1,11 @@
+jobs:
+- job: BuildStage
+  steps:
+  - task: PowerShell@2
+    displayName: Task from Jobs Template (Jobs Template)
+    inputs:
+      targetType: 'inline'
+      script: |
+        # Write your PowerShell commands here.
+        
+        Write-Host "Task of build going here"
