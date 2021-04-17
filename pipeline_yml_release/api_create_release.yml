@@ -9,6 +9,7 @@ jobs:
 - job: release_deploy
   steps:
     - task: PowerShell@2
+      displayName: Get Latest Build/Completed ID
       inputs:
         targetType: 'inline'
         script: |
@@ -51,11 +52,11 @@ jobs:
               "manualEnvironments": null
           }
           "@
-            $contentType = 'application/json'
-            $url = "https://vsrm.dev.azure.com/azureDevOpsLaboratory/Azureworshop/_apis/release/releases?api-version=6.1-preview.8"
-            $executeCommand= Invoke-RestMethod -Uri $url -Method POST -Body $body -ContentType $contentType -Headers @{
-                Authorization = "Bearer $env:SYSTEM_ACCESSTOKEN"
-            }
+          $contentType = 'application/json'
+          $url = "https://vsrm.dev.azure.com/azureDevOpsLaboratory/Azureworshop/_apis/release/releases?api-version=6.1-preview.8"
+          $executeCommand = Invoke-RestMethod -Uri $url -Method POST -Body $body -ContentType $contentType -Headers @{
+              Authorization = "Bearer $env:SYSTEM_ACCESSTOKEN"
+          }
       env:
         SYSTEM_ACCESSTOKEN: $(System.AccessToken)
 ...
