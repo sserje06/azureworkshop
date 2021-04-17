@@ -9,7 +9,7 @@ jobs:
 - job: release_deploy
   steps:
     - task: PowerShell@2
-      displayName: Get Latest Build/Completed ID
+      displayName: Get Latest Build/Run Release
       inputs:
         targetType: 'inline'
         script: |
