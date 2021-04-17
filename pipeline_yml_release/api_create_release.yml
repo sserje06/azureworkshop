@@ -17,18 +17,8 @@ jobs:
                   $result_buid_01 = Invoke-RestMethod -Uri $url -Headers @{
                       Authorization = "Bearer $env:SYSTEM_ACCESSTOKEN"
                   }
-          $url2 = "https://dev.azure.com/azureDevOpsLaboratory/Azureworshop/_apis/build/latest/$(build_definition_name_02)?branchName=$(switch_branch)&api-version=6.1-preview.1"
-                  $result_buid_02 = Invoke-RestMethod -Uri $url -Headers @{
-                      Authorization = "Bearer $env:SYSTEM_ACCESSTOKEN"
-                  }
-          $url3 = "https://dev.azure.com/azureDevOpsLaboratory/Azureworshop/_apis/build/latest/$(build_definition_name_03)?branchName=$(switch_branch)&api-version=6.1-preview.1"
-                  $result_buid_03 = Invoke-RestMethod -Uri $url -Headers @{
-                      Authorization = "Bearer $env:SYSTEM_ACCESSTOKEN"
-                  }
           echo Create Build ID Variables
           $buildId_01 = $result_buid_01.id
-          $buildId_02 = $result_buid_02.id
-          $buildId_03 = $result_buid_03.id
 
           echo Create Body
           $body = @"
@@ -41,20 +31,6 @@ jobs:
                   "instanceReference": {
                       "id": "$buildId_01",
                       "name": "api01"
-                  }
-              },
-              {
-                  "alias": "api02",
-                  "instanceReference": {
-                      "id": "$buildId_02",
-                      "name": "api02"
-                  }
-              },
-              {
-                  "alias": "api03",
-                  "instanceReference": {
-                      "id": "$buildId_03",
-                      "name": "api03"
                   }
               }
               ],
